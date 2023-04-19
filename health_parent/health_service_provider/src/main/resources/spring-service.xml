@@ -12,6 +12,9 @@
                             http://code.alibabatech.com/schema/dubbo/dubbo.xsd
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder/>
+
     <!-- 指定应用名称 -->
     <dubbo:application name="health_service_provider"/>
     <!--指定暴露服务的端口，如果不指定默认为20880-->
@@ -19,7 +22,7 @@
     <!--指定服务注册中心地址-->
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <!--批量扫描，发布服务-->
-    <dubbo:annotation package="com.zsk.service"/>
+    <dubbo:annotation package="com.zsk.service.impl"/>
 
 <!--    &lt;!&ndash; 提供方应用信息，用于计算依赖关系 &ndash;&gt;-->
 <!--    <dubbo:application name="provider"/>-->
