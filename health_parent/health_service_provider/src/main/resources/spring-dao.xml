@@ -22,14 +22,24 @@
         <property name="username" value="root" />
         <property name="password" value="1008611" />
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/health?useAffectedRows=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Shanghai&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+        <property name="url" value="jdbc:mysql://localhost:3306/health?
+                                    useAffectedRows=true&amp;
+                                    useSSL=false&amp;
+                                    useUnicode=true&amp;
+                                    characterEncoding=UTF-8&amp;
+                                    allowMultiQueries=true&amp;
+                                    serverTimezone=Asia/Shanghai&amp;
+                                    autoReconnect=true&amp;
+                                    failOverReadOnly=false" />
     </bean>
+
     <!--spring和mybatis整合的工厂bean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:SqlMapConfig.xml" />
     </bean>
     <!--批量扫描接口生成代理对象-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--指定接口所在的包-->
         <property name="basePackage" value="com.zsk.dao" />
     </bean>
