@@ -2,6 +2,8 @@ package com.zsk.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zsk.constant.MessageConstant;
+import com.zsk.entity.PageResult;
+import com.zsk.entity.QueryPageBean;
 import com.zsk.entity.Result;
 import com.zsk.pojo.CheckItem;
 import com.zsk.service.CheckItemService;
@@ -32,6 +34,12 @@ public class CheckItemController {
             return new Result(false, MessageConstant.ADD_CHECKITEM_FAIL);
         }
         System.out.println("已完成控制器代码，返回");
-        return new Result(true,MessageConstant.ADD_CHECKITEM_SUCCESS);
+        return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS);
+    }
+
+    //检查项分页查询
+    @RequestMapping("/findPage.do")
+    public PageResult findPage(@RequestBody QueryPageBean queryPageBean) {
+        return checkItemService.pageQuery(queryPageBean);
     }
 }

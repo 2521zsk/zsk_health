@@ -1,7 +1,7 @@
 package com.zsk.service;
 
-
-import com.alibaba.dubbo.config.annotation.Reference;
+import com.zsk.entity.PageResult;
+import com.zsk.entity.QueryPageBean;
 import com.zsk.pojo.CheckItem;
 
 /**
@@ -9,4 +9,5 @@ import com.zsk.pojo.CheckItem;
  */
 public interface CheckItemService {
     public void add(CheckItem checkItem);
+    public PageResult pageQuery(QueryPageBean queryPageBean);
 }
