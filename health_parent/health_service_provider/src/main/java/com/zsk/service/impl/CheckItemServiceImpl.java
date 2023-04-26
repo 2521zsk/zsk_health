@@ -41,5 +41,16 @@ public class CheckItemServiceImpl implements CheckItemService {
         long total = pages.getTotal();
         List<CheckItem> rows = pages.getResult();
         return new PageResult(total, rows);
+
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        //判断该id是否存在于检查组中
+        long count = checkItemDao.findCountById(id);
+        if (count > 0) {
+            new RuntimeException();
+        }
+        checkItemDao.deleteById(id);
     }
 }

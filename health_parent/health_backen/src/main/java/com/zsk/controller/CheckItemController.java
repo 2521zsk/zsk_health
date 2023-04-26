@@ -22,24 +22,33 @@ public class CheckItemController {
     private CheckItemService checkItemService;
 
     //新增检查项
-    @RequestMapping("/add.do")
+    @RequestMapping("/add")
     public Result add(@RequestBody CheckItem checkItem) {
-        System.out.println("来到控制器");
-        System.out.println(checkItem);
         try {
             checkItemService.add(checkItem);
-            System.out.println("已执行添加操作");
         } catch (Exception e) {
             e.printStackTrace();
             return new Result(false, MessageConstant.ADD_CHECKITEM_FAIL);
         }
-        System.out.println("已完成控制器代码，返回");
         return new Result(true, MessageConstant.ADD_CHECKITEM_SUCCESS);
     }
 
     //检查项分页查询
-    @RequestMapping("/findPage.do")
+    @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean) {
         return checkItemService.pageQuery(queryPageBean);
+    }
+
+    //新增检查项
+    @RequestMapping("/delete")
+    public Result delete(Integer id) {
+        try {
+            checkItemService.deleteById(id);
+        }catch (RuntimeException e) {
+            return new Result(false, e.getMessage());
+        } catch (Exception e) {
+            return new Result(false, MessageConstant.DELETE_CHECKITEM_FAIL);
+        }
+        return new Result(true, MessageConstant.DELETE_CHECKITEM_SUCCESS);
     }
 }
