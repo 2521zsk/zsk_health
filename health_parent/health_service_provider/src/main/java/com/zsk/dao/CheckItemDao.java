@@ -15,4 +15,9 @@ public interface CheckItemDao {
 
     //通过id删除检查项
     public void deleteById(Integer id);
+
+    //编辑检查项
+    public void edit(CheckItem checkItem);
+
+    public CheckItem findById(Integer id);
 }
