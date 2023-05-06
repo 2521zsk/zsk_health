@@ -284,6 +284,23 @@
         methods: {
             //编辑
             handleEdit() {
+                //发送ajax请求将模型数据提交到后台处理
+                axios.post("/checkgroup/edit.do?checkitemIds=" + this.checkitemIds, this.formData).then((res) => {
+                    //关闭新增窗口
+                    this.dialogFormVisible4Edit = false;
+                    if (res.data.flag) {
+                        //新增成功，弹出成功提示
+                        this.$message({
+                            message: res.data.message,
+                            type: 'success'
+                        });
+                    } else {
+                        //新增失败，弹出错误提示
+                        this.$message.error(res.data.message);
+                    }
+                }).finally(() => {
+                    this.findPage();
+                });
             },
             //添加
             handleAdd() {
@@ -346,6 +363,31 @@
             },
             // 弹出编辑窗口
             handleUpdate(row) {
+                this.dialogFormVisible4Edit = true;
+                this.activeName = 'first';
+                axios.get("/checkgroup/findById.do?id=" + row.id).then((res) => {
+                    if (res.data.flag) {
+                        this.formData = res.data.data;
+                    } else {
+                        this.$message.error(res.data.message);
+                    }
+                });
+                axios.get("/checkitem/findAll.do").then((res) => {
+                    if (res.data.flag) {
+                        this.tableData = res.data.data;
+                        //页面复选框的勾选
+                        axios.get("/checkgroup/findCheckItemIdsByCheckGroupId.do?id=" + row.id).then((res) => {
+                            if (res.data.flag) {
+                                this.checkitemIds = res.data.data;
+                            } else {
+                                this.$message.error(res.data.message);
+                            }
+                        });
+                        this.checkitemIds = [];
+                    } else {
+                        this.$message.error(res.data.message);
+                    }
+                });
             },
             //切换页码
             handleCurrentChange(currentPage) {
