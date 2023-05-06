@@ -2,6 +2,8 @@ package com.zsk.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zsk.constant.MessageConstant;
+import com.zsk.entity.PageResult;
+import com.zsk.entity.QueryPageBean;
 import com.zsk.entity.Result;
 import com.zsk.pojo.CheckGroup;
 import com.zsk.service.CheckGroupService;
@@ -30,5 +32,11 @@ public class CheckGroupController {
             return new Result(false, MessageConstant.ADD_CHECKGROUP_FAIL);
         }
         return new Result(true, MessageConstant.ADD_CHECKGROUP_SUCCESS);
+    }
+
+    //分页查询
+    @RequestMapping("/findPage")
+    public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
+        return checkGroupService.pageQuery(queryPageBean);
     }
 }

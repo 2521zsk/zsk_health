@@ -22,5 +22,10 @@
       	(#{checkGroupId},#{checkitemId})
     </insert>
 
-
+    <select id="findByCondition" parameterType="string" resultType="com.zsk.pojo.CheckGroup">
+        select * from t_checkgroup
+        <if test="value != null and value != '' and value.length > 0">
+            where code = #{value} or name = #{value} or helpCode = #{value}
+        </if>
+    </select>
 </mapper>

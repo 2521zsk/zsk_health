@@ -1,5 +1,7 @@
 package com.zsk.service;
 
+import com.zsk.entity.PageResult;
+import com.zsk.entity.QueryPageBean;
 import com.zsk.pojo.CheckGroup;
 
 /**
@@ -8,4 +10,5 @@ import com.zsk.pojo.CheckGroup;
 
 public interface CheckGroupService {
     public void add(CheckGroup checkGroup, Integer[] checkitemIds);
+    public PageResult pageQuery(QueryPageBean queryPageBean);
 }
