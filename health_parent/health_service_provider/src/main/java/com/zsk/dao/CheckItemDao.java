@@ -3,6 +3,8 @@ package com.zsk.dao;
 import com.github.pagehelper.Page;
 import com.zsk.pojo.CheckItem;
 
+import java.util.List;
+
 public interface CheckItemDao {
     //检查项添加操作
     public void add(CheckItem checkItem);
@@ -19,5 +21,9 @@ public interface CheckItemDao {
     //编辑检查项
     public void edit(CheckItem checkItem);
 
+    //通过id查找检查项
     public CheckItem findById(Integer id);
+
+    //查找全部检查项
+    public List<CheckItem> findAll();
 }

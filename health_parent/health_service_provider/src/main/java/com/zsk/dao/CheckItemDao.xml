@@ -61,4 +61,8 @@
     <select id="findById" parameterType="int" resultType="com.zsk.pojo.CheckItem">
         select * from t_checkitem where id = #{id}
     </select>
+
+    <select id="findAll" resultType="com.zsk.pojo.CheckItem">
+        select * from t_checkitem
+    </select>
 </mapper>

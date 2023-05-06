@@ -4,6 +4,8 @@ import com.zsk.entity.PageResult;
 import com.zsk.entity.QueryPageBean;
 import com.zsk.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * 检查项服务接口
  */
@@ -17,4 +19,6 @@ public interface CheckItemService {
     public void edit(CheckItem checkItem);
 
     public CheckItem findById(int id);
+
+    public List<CheckItem> findAll();
 }

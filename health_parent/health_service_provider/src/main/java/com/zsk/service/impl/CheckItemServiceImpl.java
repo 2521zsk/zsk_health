@@ -63,4 +63,9 @@ public class CheckItemServiceImpl implements CheckItemService {
     public CheckItem findById(int id) {
         return checkItemDao.findById(id);
     }
+
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
 }

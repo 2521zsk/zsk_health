@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 检查项后台管理
  */
@@ -78,5 +80,16 @@ public class CheckItemController {
         return new Result(true, MessageConstant.EDIT_CHECKITEM_SUCCESS);
     }
 
-
+    //编辑检查项回显表单数据
+    @RequestMapping("/findAll")
+    public Result findAll() {
+        try {
+            List<CheckItem> list = checkItemService.findAll();
+            return new Result(true, MessageConstant.QUERY_CHECKITEM_SUCCESS, list);
+        } catch (RuntimeException e) {
+            return new Result(false, e.getMessage());
+        } catch (Exception e) {
+            return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
 }
