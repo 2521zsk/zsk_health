@@ -3,8 +3,10 @@ package com.zsk.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zsk.constant.MessageConstant;
 import com.zsk.entity.Result;
+import com.zsk.pojo.Setmeal;
 import com.zsk.service.SetmealService;
 import com.zsk.utils.QiNiuUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +43,18 @@ public class SetmealController {
             e.printStackTrace();
             //图片上传失败
             return new Result(false, MessageConstant.PIC_UPLOAD_FAIL);
+        }
+    }
+
+    //新增套餐
+    @RequestMapping("/add")
+    public Result add(@RequestBody Setmeal setmeal, Integer[] checkgroupIds) {
+        try {
+            setmealService.add(setmeal, checkgroupIds);
+            return new Result(true, MessageConstant.ADD_SETMEAL_SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, MessageConstant.ADD_SETMEAL_FAIL);
         }
     }
 }

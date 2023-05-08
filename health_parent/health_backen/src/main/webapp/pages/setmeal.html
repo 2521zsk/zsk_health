@@ -280,6 +280,19 @@
             },
             //添加
             handleAdd() {
+                axios.post("/setmeal/add.do?checkgroupIds=" + this.checkgroupIds, this.formData).then((res) => {
+                    this.dialogFormVisible = false;
+                    if (res.data.flag) {
+                        this.$message({
+                            type: 'success',
+                            message: res.data.message
+                        });
+                    } else {
+                        this.$message.error(res.data.message);
+                    }
+                }).finally(() => {
+                    this.findPage();
+                });
             },
             //分页查询
             findPage() {
