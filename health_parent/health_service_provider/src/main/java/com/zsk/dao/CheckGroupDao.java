@@ -21,4 +21,6 @@ public interface CheckGroupDao {
     public void update(CheckGroup checkGroup);
 
     public void deleteCheckItemIdsByCheckGroupId(Integer id);
+
+    public List<CheckGroup> findAll();
 }
