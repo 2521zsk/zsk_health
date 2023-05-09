@@ -3,6 +3,8 @@ package com.zsk.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.zsk.constant.MessageConstant;
 import com.zsk.constant.RedisConstant;
+import com.zsk.entity.PageResult;
+import com.zsk.entity.QueryPageBean;
 import com.zsk.entity.Result;
 import com.zsk.pojo.Setmeal;
 import com.zsk.service.SetmealService;
@@ -65,5 +67,16 @@ public class SetmealController {
             e.printStackTrace();
             return new Result(false, MessageConstant.ADD_SETMEAL_FAIL);
         }
+    }
+
+    //分页查询
+    @RequestMapping("/findPage")
+    public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
+        PageResult pageResult = setmealService.pageQuery(
+                queryPageBean.getCurrentPage(),
+                queryPageBean.getPageSize(),
+                queryPageBean.getQueryString()
+        );
+        return pageResult;
     }
 }

@@ -30,7 +30,8 @@
                                     allowMultiQueries=true&amp;
                                     serverTimezone=Asia/Shanghai&amp;
                                     autoReconnect=true&amp;
-                                    failOverReadOnly=false" />
+                                    failOverReadOnly=false&amp;
+                                    allowPublicKeyRetrieval=true" />
     </bean>
 
     <!--spring和mybatis整合的工厂bean-->

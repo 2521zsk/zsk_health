@@ -13,6 +13,7 @@
         <module>health_interface</module>
         <module>health_service_provider</module>
         <module>health_backen</module>
+        <module>health_jobs</module>
     </modules>
     <packaging>pom</packaging>
 

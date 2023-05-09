@@ -2,12 +2,14 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/health_parent/health_backen" />
+    <file type="web" url="file://$PROJECT_DIR$/health_parent/health_jobs" />
     <file type="web" url="file://$PROJECT_DIR$/health_parent/health_service_provider" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/health_parent/pom.xml" />
+        <option value="$PROJECT_DIR$/quartzdemo/pom.xml" />
       </list>
     </option>
   </component>

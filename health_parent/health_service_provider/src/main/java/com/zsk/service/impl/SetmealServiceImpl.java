@@ -1,8 +1,13 @@
 package com.zsk.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.zsk.constant.RedisConstant;
+import com.zsk.dao.CheckItemDao;
 import com.zsk.dao.SetmealDao;
+import com.zsk.entity.PageResult;
+import com.zsk.pojo.CheckItem;
 import com.zsk.pojo.Setmeal;
 import com.zsk.service.SetmealService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +41,11 @@ public class SetmealServiceImpl implements SetmealService {
         }
         //将图片名称保存到Redis
         jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES, setmeal.getImg());
+    }
+
+    public PageResult pageQuery(Integer currentPage, Integer pageSize, String queryString) {
+        PageHelper.startPage(currentPage, pageSize);
+        Page<Setmeal> page = setmealDao.selectByCondition(queryString);
+        return new PageResult(page.getTotal(), page.getResult());
     }
 }
