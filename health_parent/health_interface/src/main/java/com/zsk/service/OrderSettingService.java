@@ -9,4 +9,6 @@ public interface OrderSettingService {
     public void add(List<OrderSetting> list);
 
     public List<Map> getOrderSettingByMonth(String date);//参数格式为：2019-03
+
+    public void editNumberByDate(OrderSetting orderSetting);
 }
